@@ -5,6 +5,6 @@ import io.reactivex.Observable
 import retrofit2.http.GET
 
 interface HomeApiService {
-    @GET("/posts")
+    @GET("/list")
     fun getPosts(): Observable<List<Home>>
 }

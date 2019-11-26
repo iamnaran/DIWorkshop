@@ -13,6 +13,9 @@ interface HomeDao {
 //    @Query("SELECT * FROM workshop ORDER BY rank :rank")
 //    fun queryData(limit:Int, offset:Int): Single<List<Home>>
 
+    @Query("SELECT * FROM home")
+    fun getAll(): Single<List<Home>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertSpecificHomeData(home: Home)
 
