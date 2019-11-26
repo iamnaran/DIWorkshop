@@ -1,4 +1,4 @@
-package com.android.diworkshop.presenters
+package com.android.diworkshop.repositories
 
 import android.util.Log
 import com.android.diworkshop.data.apiservice.HomeApiService
@@ -8,7 +8,7 @@ import com.android.diworkshop.utils.Utils
 import io.reactivex.Observable
 import javax.inject.Inject
 
-class HomePresenter  @Inject constructor(
+class HomeRepository  @Inject constructor(
     private val homeApiService: HomeApiService,
     private val homeDao: HomeDao,
     private val utils: Utils){
@@ -22,7 +22,7 @@ class HomePresenter  @Inject constructor(
         }
         val observableFromDb = getHomeDataFromLocal()
 
-        return if (hasConnection) Observable.concatArrayEager(observableFromApi, observableFromDb)
+        return if (hasConnection) Observable.concatArrayDelayError(observableFromApi, observableFromDb)
         else observableFromDb
     }
 
@@ -31,6 +31,7 @@ class HomePresenter  @Inject constructor(
 
         return homeApiService.getPosts()
             .doOnNext {
+                Log.e("Server has", it.size.toString())
 
                 for (item in it) {
                     homeDao.insertSpecificHomeData(item)
@@ -46,7 +47,7 @@ class HomePresenter  @Inject constructor(
             .toObservable()
             .doOnNext {
                 //Print log it.size :)
-                Log.e("REPOSITORY DB Items *** ", it.size.toString())
+                Log.e("Databse has", it.size.toString())
             }
 
     }

@@ -4,13 +4,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import javax.inject.Inject
 
+@Suppress("UNCHECKED_CAST")
 class HomeViewModelFactory @Inject constructor(
 
-  private val feedViewModel: FeedViewModel) : ViewModelProvider.Factory {
+  private val homeViewModel: HomeViewModel) : ViewModelProvider.Factory {
 
   override fun <T : ViewModel> create(modelClass: Class<T>): T {
-    if (modelClass.isAssignableFrom(FeedViewModel::class.java!!)) {
-      return feedViewModel as T
+    if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
+      return homeViewModel as T
     }
     throw IllegalArgumentException("Unknown class name")
   }

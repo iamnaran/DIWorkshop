@@ -1,7 +1,6 @@
 package com.android.diworkshop.di.modules
 
-import com.android.diworkshop.apiservice.HomeApiService
-import com.squareup.moshi.KotlinJsonAdapterFactory
+import com.android.diworkshop.data.apiservice.HomeApiService
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -19,7 +18,7 @@ class NetworkModule (private val baseUrl: String) {
 
     @Provides
     @Singleton
-    fun providesMoshi(): Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+    fun providesMoshi(): Moshi = Moshi.Builder().add(com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory()).build()
 
     @Provides
     @Singleton

@@ -1,10 +1,10 @@
-package com.android.diworkshop.apiservice
+package com.android.diworkshop.data.apiservice
 
 import com.android.diworkshop.data.model.Home
 import io.reactivex.Observable
 import retrofit2.http.GET
 
 interface HomeApiService {
-    @GET("/list")
+    @GET("list")
     fun getPosts(): Observable<List<Home>>
 }

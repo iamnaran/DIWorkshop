@@ -1,13 +1,13 @@
-package com.android.diworkshop.data.database
+package com.android.diworkshop.di.modules
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.android.diworkshop.data.model.Home
-import com.android.diworkshop.data.model.HomeDao
+import com.android.diworkshop.data.database.HomeDao
 
-@Database(entities = [Home::class], version = 1, exportSchema = false)
-abstract class AppDatabase : RoomDatabase() {
-
+@Database(entities = [Home::class], version = 31, exportSchema = true)
+abstract class DatabaseModule : RoomDatabase() {
+//    exportSchema = false
     // getting instance of HomeDao
     abstract fun getHomeDao(): HomeDao
 }

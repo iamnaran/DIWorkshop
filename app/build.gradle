@@ -39,6 +39,17 @@ android {
         test.java.srcDirs = ['src/test/kotlin']
         androidTest.java.srcDirs = ['src/androidTest/kotlin']
     }
+    android {
+        compileOptions {
+            sourceCompatibility = JavaVersion.VERSION_1_8
+            targetCompatibility = JavaVersion.VERSION_1_8
+        }
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
 }
 
 
@@ -84,9 +95,9 @@ dependencies {
     implementation "com.google.dagger:dagger:$dagger2_version"
     kapt "com.google.dagger:dagger-compiler:$dagger2_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger2_version"
-
     compileOnly "org.glassfish:javax.annotation:3.1.1"
-    implementation 'com.google.dagger:dagger-android-support:2.11-rc2'
+
+    implementation 'com.google.dagger:dagger-android-support:2.13'
 
     implementation "android.arch.lifecycle:reactivestreams:$archLifecycleVersion"
 
@@ -94,6 +105,12 @@ dependencies {
     //Rx
     implementation "io.reactivex.rxjava2:rxjava:2.2.9"
     implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
+
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    kapt 'com.github.bumptech.glide:compiler:4.9.0'
+    implementation("io.coil-kt:coil:0.8.0")
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
